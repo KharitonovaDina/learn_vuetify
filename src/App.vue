@@ -1,32 +1,64 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-card
+      height="100vh"
+      tile="false"
+    >
+      <v-navigation-drawer
+        class="#1E1717"
+        dark
+        permanent
+      >
+        <v-list>
+          <v-list-item
+            v-for="item in items"
+            :key="item.title"
+            link
+          >
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+
+        <template v-slot:append>
+          <div class="pa-2">
+            <v-btn block>
+              Logout
+            </v-btn>
+          </div>
+        </template>
+      </v-navigation-drawer>
+    </v-card>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-nav {
-  padding: 30px;
+export default {
+  name: 'App',
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+  data() {
+    return {
+      items: [
+        {
+          title: 'Dashboard',
+          icon: 'mdi-view-dashboard',
+        },
+        {
+          title: 'Account',
+          icon: 'mdi-account-box',
+        },
+        {
+          title: 'Admin',
+          icon: 'mdi-gavel',
+        },
+      ],
+    };
+  },
+};
+</script>
