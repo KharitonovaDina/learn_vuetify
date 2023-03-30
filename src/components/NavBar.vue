@@ -24,13 +24,16 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
+    <PrimaryBtn/>
   </v-navigation-drawer>
 </template>
 
 <script>
+import PrimaryBtn from '@/components/PrimaryBtn.vue';
+
 export default {
   name: 'NavBar',
-
+  components: { PrimaryBtn },
   data() {
     return {
       items: [
