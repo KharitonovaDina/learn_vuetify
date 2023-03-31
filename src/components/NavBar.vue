@@ -26,10 +26,10 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-      <PrimaryBtn
-        class="navbar__login-btn"
-      />
     </v-navigation-drawer>
+    <PrimaryBtn
+      class="navbar__login-btn"
+    />
   </v-container>
 </template>
 
@@ -54,6 +54,18 @@ export default {
           title: 'TV-shows',
           icon: 'mdi-television-box',
         },
+        {
+          title: 'Films',
+          icon: 'mdi-movie',
+        },
+        {
+          title: 'Serials',
+          icon: 'mdi-video',
+        },
+        {
+          title: 'TV-shows',
+          icon: 'mdi-television-box',
+        },
       ],
     };
   },
@@ -62,9 +74,11 @@ export default {
 
 <style scoped>
   .navbar {
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     width: 235px;
-    padding: 24px;
+    padding: 36px 24px;
     margin: 0;
     background-color: #1E1717;
   }
@@ -73,6 +87,7 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     background-color: inherit;
+    border: none;
   }
   .navbar__logo{
     margin-bottom: 24px;
