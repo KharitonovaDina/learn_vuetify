@@ -1,31 +1,36 @@
 <template>
-  <v-navigation-drawer
-    tag="nav"
-    color="#1E1717"
-    dark
-    width="235px"
-  >
-    <h3 class="text-h4 white--text px-2 text-uppercase">
-      Filmoteka
-    </h3>
-    <v-list
-      nav
+  <v-container class="navbar">
+    <v-navigation-drawer
+      class="navbar__wrap"
+      tag="nav"
     >
-      <v-list-item
-        v-for="item in items"
-        :key="item.title"
+      <div class="navbar__logo">
+        <span class="navbar__logo-txt"> Filmoteka </span>
+      </div>
+      <v-list
+        class="pa-0"
+        dark
+        nav
       >
-        <v-list-item-icon>
-          <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-icon>
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          class="pa-0"
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
 
-        <v-list-item-content>
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
-    <PrimaryBtn/>
-  </v-navigation-drawer>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+      <PrimaryBtn
+        class="navbar__login-btn"
+      />
+    </v-navigation-drawer>
+  </v-container>
 </template>
 
 <script>
@@ -56,5 +61,30 @@ export default {
 </script>
 
 <style scoped>
-
+  .navbar {
+    height: 100vh;
+    width: 235px;
+    padding: 24px;
+    margin: 0;
+    background-color: #1E1717;
+  }
+  .navbar__wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: inherit;
+  }
+  .navbar__logo{
+    margin-bottom: 24px;
+  }
+  .navbar__logo-txt {
+    color: white;
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: 700;
+  }
+  .navbar__login-btn {
+    width: 100%;
+    color: white;
+  }
 </style>
