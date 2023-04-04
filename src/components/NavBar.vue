@@ -1,28 +1,30 @@
 <template>
   <v-container class="navbar">
     <v-navigation-drawer
-      class="navbar__wrap"
       tag="nav"
+      dark
+      floating
+      app
     >
-      <div class="navbar__logo">
-        <span class="navbar__logo-txt"> Filmoteka </span>
-      </div>
-      <v-list
-        class="pa-0"
-        dark
-        nav
+      <router-link
+        to="/"
+        class="text-uppercase white--text text-h4 text-decoration-none"
       >
+        Filmoteka
+      </router-link>
+      <v-list>
         <v-list-item
           v-for="item in items"
           :key="item.title"
+          router :to="item.route"
           class="pa-0"
         >
           <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon> {{ item.icon }} </v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
+            <v-list-item-title> {{ item.title }} </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -45,26 +47,32 @@ export default {
         {
           title: 'Films',
           icon: 'mdi-movie',
+          route: '/',
         },
         {
           title: 'Serials',
           icon: 'mdi-video',
+          route: '/films',
         },
         {
           title: 'TV-shows',
           icon: 'mdi-television-box',
+          route: '/',
         },
         {
           title: 'Films',
           icon: 'mdi-movie',
+          route: '/films',
         },
         {
           title: 'Serials',
           icon: 'mdi-video',
+          route: '/films',
         },
         {
           title: 'TV-shows',
           icon: 'mdi-television-box',
+          route: '/films',
         },
       ],
     };
@@ -73,33 +81,33 @@ export default {
 </script>
 
 <style scoped>
-  .navbar {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 235px;
-    padding: 36px 24px;
-    margin: 0;
-    background-color: #1E1717;
-  }
-  .navbar__wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: inherit;
-    border: none;
-  }
-  .navbar__logo{
-    margin-bottom: 24px;
-  }
-  .navbar__logo-txt {
-    color: white;
-    text-transform: uppercase;
-    font-size: 32px;
-    font-weight: 700;
-  }
-  .navbar__login-btn {
-    width: 100%;
-    color: white;
-  }
+  /*.navbar {*/
+  /*  display: flex;*/
+  /*  flex-direction: column;*/
+  /*  height: 100vh;*/
+  /*  width: 235px;*/
+  /*  padding: 36px 24px;*/
+  /*  margin: 0;*/
+  /*  background-color: #1E1717;*/
+  /*}*/
+  /*.navbar__wrap {*/
+  /*  display: flex;*/
+  /*  flex-direction: column;*/
+  /*  justify-content: space-between;*/
+  /*  background-color: inherit;*/
+  /*  border: none;*/
+  /*}*/
+  /*.navbar__logo{*/
+  /*  margin-bottom: 24px;*/
+  /*}*/
+  /*.navbar__logo-txt {*/
+  /*  color: white;*/
+  /*  text-transform: uppercase;*/
+  /*  font-size: 32px;*/
+  /*  font-weight: 700;*/
+  /*}*/
+  /*.navbar__login-btn {*/
+  /*  width: 100%;*/
+  /*  color: white;*/
+  /*}*/
 </style>

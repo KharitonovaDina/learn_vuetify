@@ -1,7 +1,17 @@
 <template>
   <v-app>
+    <v-app-bar
+      flat
+      app
+    >
+      <v-app-bar-title
+        class="text-uppercase"
+      >
+        Logogo
+      </v-app-bar-title>
+    </v-app-bar>
     <NavBar/>
-    <v-content>
+    <v-content class="mx-4 mb-4">
       <router-view/>
     </v-content>
   </v-app>
