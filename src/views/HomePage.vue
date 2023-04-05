@@ -1,5 +1,15 @@
 <template>
   <v-container class="home">
+    <v-layout row class="my-3 px-4">
+      <v-btn small text color="dark-grey" @click="sortBy('title')">
+        <v-icon left small>mdi-folder</v-icon>
+        <span class="caption text-lowercase">By title</span>
+      </v-btn>
+      <v-btn small text color="dark-grey" @click="sortBy('person')">
+        <v-icon left small>mdi-account</v-icon>
+        <span class="caption text-lowercase">By person</span>
+      </v-btn>
+    </v-layout>
     <v-card
       flat
       class="px-3"
@@ -39,14 +49,14 @@ export default {
     return {
       projects: [
         {
-          title: 1,
-          person: 1,
+          title: 5,
+          person: 5,
           date: 1,
           status: 'on',
         },
         {
-          title: 2,
-          person: 2,
+          title: 6,
+          person: 8,
           date: 2,
           status: 'off',
         },
@@ -58,6 +68,12 @@ export default {
         },
       ],
     };
+  },
+
+  methods: {
+    sortBy(prop) {
+      this.projects.sort((a, b) => a[prop] < b[prop] ? -1 : 1);
+    },
   },
 };
 </script>
