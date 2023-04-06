@@ -1,15 +1,56 @@
 <template>
   <v-container class="home">
     <v-layout row class="my-3 px-4">
-      <v-btn small text color="dark-grey" @click="sortBy('title')">
-        <v-icon left small>mdi-folder</v-icon>
-        <span class="caption text-lowercase">By title</span>
-      </v-btn>
-      <v-btn small text color="dark-grey" @click="sortBy('person')">
-        <v-icon left small>mdi-account</v-icon>
-        <span class="caption text-lowercase">By person</span>
-      </v-btn>
+      <v-tooltip top>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            small
+            text
+            color="dark-grey"
+            @click="sortBy('title')"
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon left small>mdi-folder</v-icon>
+            <span class="caption text-lowercase">By title</span>
+          </v-btn>
+        </template>
+        <span>Sort project by project name</span>
+      </v-tooltip>
+
+      <v-tooltip top>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            small
+            text
+            color="dark-grey"
+            @click="sortBy('person')"
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon left small>mdi-account</v-icon>
+            <span class="caption text-lowercase">By person</span>
+          </v-btn>
+        </template>
+        <span>Sort project by person</span>
+      </v-tooltip>
     </v-layout>
+    <v-expansion-panels flat class="mb-8">
+      <v-expansion-panel
+        v-for="item in myProjects"
+        :key="item.title"
+      >
+        <v-expansion-panel-header>
+          {{ item.title }}
+        </v-expansion-panel-header>
+        <v-expansion-panel-content>
+          <p>
+            {{ item.person + item.date + item.status }}
+          </p>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
+
     <v-card
       flat
       class="px-3"
@@ -39,6 +80,7 @@
         <v-divider></v-divider>
       </v-layout>
     </v-card>
+
   </v-container>
 </template>
 
@@ -49,22 +91,34 @@ export default {
     return {
       projects: [
         {
-          title: 5,
-          person: 5,
-          date: 1,
+          title: '5',
+          person: '56',
+          date: '1',
           status: 'on',
         },
         {
-          title: 6,
-          person: 8,
-          date: 2,
+          title: '6',
+          person: '8',
+          date: '2',
           status: 'off',
         },
         {
-          title: 3,
-          person: 3,
-          date: 3,
+          title: '3',
+          person: '45',
+          date: '3',
           status: 'err',
+        },
+        {
+          title: '36',
+          person: '45',
+          date: '3',
+          status: 'on',
+        },
+        {
+          title: '24',
+          person: '45',
+          date: '3',
+          status: 'off',
         },
       ],
     };
@@ -72,7 +126,13 @@ export default {
 
   methods: {
     sortBy(prop) {
-      this.projects.sort((a, b) => a[prop] < b[prop] ? -1 : 1);
+      this.projects.sort((a, b) => (a[prop] < b[prop] ? -1 : 1));
+    },
+  },
+
+  computed: {
+    myProjects() {
+      return this.projects.filter((project) => (project.person === '45'));
     },
   },
 };
