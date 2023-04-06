@@ -34,26 +34,46 @@
         </template>
         <span>Sort project by person</span>
       </v-tooltip>
-    </v-layout>
-    <v-expansion-panels flat class="mb-8">
-      <v-expansion-panel
-        v-for="item in myProjects"
-        :key="item.title"
+      <v-expansion-panels flat class="mb-8">
+        <v-expansion-panel
+          v-for="item in myProjects"
+          :key="item.title"
+        >
+          <v-expansion-panel-header>
+            {{ item.title }}
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <p>
+              {{ item.person + item.date + item.status }}
+            </p>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
+      <v-dialog
+        v-model="dialog"
+        width="500"
       >
-        <v-expansion-panel-header>
-          {{ item.title }}
-        </v-expansion-panel-header>
-        <v-expansion-panel-content>
-          <p>
-            {{ item.person + item.date + item.status }}
-          </p>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-    </v-expansion-panels>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            color="red"
+            class="white--text"
+            v-bind="attrs"
+            v-on="on"
+          >
+            Add new project
+          </v-btn>
+        </template>
+        <v-card>
+          <v-card-title>
+            New project
+          </v-card-title>
+        </v-card>
+      </v-dialog>
+    </v-layout>
 
     <v-card
       flat
-      class="px-3"
+      class="pa-3"
       :key="item.title"
       v-for="item in projects"
     >
@@ -80,7 +100,6 @@
         <v-divider></v-divider>
       </v-layout>
     </v-card>
-
   </v-container>
 </template>
 
