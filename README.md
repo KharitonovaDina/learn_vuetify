@@ -1,4 +1,4 @@
-# v-filmoteka
+# learn_vuetify
 
 ## Project setup
 ```
