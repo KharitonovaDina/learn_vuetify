@@ -49,26 +49,6 @@
           </v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
-      <v-dialog
-        v-model="dialog"
-        width="500"
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            color="red"
-            class="white--text"
-            v-bind="attrs"
-            v-on="on"
-          >
-            Add new project
-          </v-btn>
-        </template>
-        <v-card>
-          <v-card-title>
-            New project
-          </v-card-title>
-        </v-card>
-      </v-dialog>
     </v-layout>
 
     <v-card
@@ -161,11 +141,9 @@ export default {
   .project.on {
     border-left: 4px solid green;
   }
-
   .project.off {
     border-left: 4px solid orange;
   }
-
   .project.err {
     border-left: 4px solid tomato;
   }
